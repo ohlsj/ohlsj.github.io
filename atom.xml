@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ohlsj的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.ohlsj.com/"/>
+  <updated>2017-09-12T09:48:46.000Z</updated>
+  <id>http://www.ohlsj.com/</id>
+  
+  <author>
+    <name>ohlsj</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git修改历史commit的用户名和邮箱</title>
+    <link href="http://www.ohlsj.com/2017/09/12/modify-username-and-email-in-git-history-commit/"/>
+    <id>http://www.ohlsj.com/2017/09/12/modify-username-and-email-in-git-history-commit/</id>
+    <published>2017-09-12T09:00:14.000Z</published>
+    <updated>2017-09-12T09:48:46.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;p&gt;使用git时，一般都会先设置&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git config --global user.name &amp;quot;username&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git config --global user.email &amp;quot;user@email.com&amp;quot;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这个属于git的全局设置，其配置文件一般是位于用户目录的&lt;code&gt;.gitconfig&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果有多个项目，需要不同的用户名和邮箱，可以针对项目进行设置。&lt;/p&gt;
+&lt;p&gt;首先切换当前目录至项目目录，然后设置:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git config user.name &amp;quot;username&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git config user.email &amp;quot;user@email.com&amp;quot;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其实就是把&lt;code&gt;--global&lt;/code&gt;参数去掉。&lt;/p&gt;
+&lt;p&gt;问题来了：&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;如果忘了设置项目，而且有了很多次提交了，导致历史提交中使用的用户名是全局用户名，该怎么办呢&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://www.ohlsj.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用github pages和hexo搭建博客</title>
+    <link href="http://www.ohlsj.com/2017/09/11/using-github-pages-and-hexo-building-blog/"/>
+    <id>http://www.ohlsj.com/2017/09/11/using-github-pages-and-hexo-building-blog/</id>
+    <published>2017-09-11T13:15:27.000Z</published>
+    <updated>2017-09-12T01:00:57.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文章:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://hexo.io/zh-cn/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/iissnan/hexo-theme-next&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo主题hexo-theme-next&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;基于github pages和hexo可迅速搭建个人blog，省去了购买、配置服务器等过程。虽然是静态页面，但基本能满足个人blog的需求。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://www.ohlsj.com/tags/hexo/"/>
+    
+      <category term="github" scheme="http://www.ohlsj.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>migrate</title>
+    <link href="http://www.ohlsj.com/2017/09/11/migrate/"/>
+    <id>http://www.ohlsj.com/2017/09/11/migrate/</id>
+    <published>2017-09-11T08:21:02.000Z</published>
+    <updated>2017-09-11T08:22:12.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天开始，陆续把之前的文章迁移到&lt;code&gt;github
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ohlsj.com/"/>
-  <updated>2017-09-13T01:01:28.000Z</updated>
+  <updated>2017-09-13T06:44:41.000Z</updated>
   <id>http://www.ohlsj.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python之禅的密码学原理</title>
+    <link href="http://www.ohlsj.com/2017/09/13/zen-of-python-and-crypto/"/>
+    <id>http://www.ohlsj.com/2017/09/13/zen-of-python-and-crypto/</id>
+    <published>2017-09-13T01:49:38.000Z</published>
+    <updated>2017-09-13T06:44:41.000Z</updated>
+    
+    <summary type="html">
+    
+      python之禅的密码学原理
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://www.ohlsj.com/tags/python/"/>
+    
+      <category term="cryptography" scheme="http://www.ohlsj.com/tags/cryptography/"/>
+    
+  </entry>
   
   <entry>
     <title>修改git历史提交的用户名和邮箱</title>

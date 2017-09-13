@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ohlsj.com/"/>
-  <updated>2017-09-13T06:44:41.000Z</updated>
+  <updated>2017-09-13T06:59:12.000Z</updated>
   <id>http://www.ohlsj.com/</id>
   
   <author>
@@ -21,11 +21,13 @@
     <link href="http://www.ohlsj.com/2017/09/13/zen-of-python-and-crypto/"/>
     <id>http://www.ohlsj.com/2017/09/13/zen-of-python-and-crypto/</id>
     <published>2017-09-13T01:49:38.000Z</published>
-    <updated>2017-09-13T06:44:41.000Z</updated>
+    <updated>2017-09-13T06:59:12.000Z</updated>
     
     <summary type="html">
     
-      python之禅的密码学原理
+      &lt;h1 id=&quot;Python之禅&quot;&gt;&lt;a href=&quot;#Python之禅&quot; class=&quot;headerlink&quot; title=&quot;Python之禅&quot;&gt;&lt;/a&gt;Python之禅&lt;/h1&gt;&lt;p&gt;在Python命令行运行&lt;code&gt;import this&lt;/code&gt;，会打印出python之禅&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;In [1]: import this&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;The Zen of Python, by Tim Peters&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Beautiful is better than ugly.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Explicit is better than implicit.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Simple is better than complex.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Complex is better than complicated.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Flat is better than nested.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Sparse is better than dense.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Readability counts.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Special cases aren&amp;apos;t special enough to break the rules.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Although practicality beats purity.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Errors should never pass silently.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Unless explicitly silenced.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;In the face of ambiguity, refuse the temptation to guess.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;There should be one-- and preferably only one --obvious way to do it.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Although that way may not be obvious at first unless you&amp;apos;re Dutch.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Now is better than never.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Although never is often better than *right* now.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;If the implementation is hard to explain, it&amp;apos;s a bad idea.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;If the implementation is easy to explain, it may be a good idea.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Namespaces are one honking great idea -- let&amp;apos;s do more of those!&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;而运行&lt;code&gt;print(this.s)&lt;/code&gt;，则会打印出一段”乱码”:&lt;/p&gt;
     
     </summary>
     
@@ -67,7 +69,7 @@
     <link href="http://www.ohlsj.com/2017/09/11/using-github-pages-and-hexo-building-blog/"/>
     <id>http://www.ohlsj.com/2017/09/11/using-github-pages-and-hexo-building-blog/</id>
     <published>2017-09-11T13:15:27.000Z</published>
-    <updated>2017-09-12T01:00:57.000Z</updated>
+    <updated>2017-09-13T06:46:57.000Z</updated>
     
     <summary type="html">
     

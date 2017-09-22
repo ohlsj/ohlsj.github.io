@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ohlsj.com/"/>
-  <updated>2017-09-22T01:04:16.000Z</updated>
+  <updated>2017-09-22T01:05:10.000Z</updated>
   <id>http://www.ohlsj.com/</id>
   
   <author>
@@ -21,17 +21,16 @@
     <link href="http://www.ohlsj.com/2017/09/20/my-new-ubuntu-server-config/"/>
     <id>http://www.ohlsj.com/2017/09/20/my-new-ubuntu-server-config/</id>
     <published>2017-09-20T01:07:50.000Z</published>
-    <updated>2017-09-22T01:04:16.000Z</updated>
+    <updated>2017-09-22T01:05:10.000Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;基本设置&quot;&gt;&lt;a href=&quot;#基本设置&quot; class=&quot;headerlink&quot; title=&quot;基本设置&quot;&gt;&lt;/a&gt;基本设置&lt;/h1&gt;&lt;h2 id=&quot;升级&quot;&gt;&lt;a href=&quot;#升级&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;基本设置&quot;&gt;&lt;a href=&quot;#基本设置&quot; class=&quot;headerlink&quot; title=&quot;基本设置&quot;&gt;&lt;/a&gt;基本设置&lt;/h1&gt;&lt;h2 id=&quot;升级&quot;&gt;&lt;a href=&quot;#升级&quot; class=&quot;headerlink&quot; title=&quot;升级&quot;&gt;&lt;/a&gt;升级&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;apt update&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;apt upgrade&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;reboot&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;修改hostname&quot;&gt;&lt;a href=&quot;#修改hostname&quot; class=&quot;headerlink&quot; title=&quot;修改hostname&quot;&gt;&lt;/a&gt;修改hostname&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;vi /etc/hostname&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;vi /etc/hosts&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;创建用户&quot;&gt;&lt;a href=&quot;#创建用户&quot; class=&quot;headerlink&quot; title=&quot;创建用户&quot;&gt;&lt;/a&gt;创建用户&lt;/h2&gt;&lt;p&gt;同时加入sudoer并设置sudo免密码&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;/etc/sudoers&lt;/code&gt;默认没有写权限&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     

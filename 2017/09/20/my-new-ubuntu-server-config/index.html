@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限  123adduser myuserchmod +x /etc/sudoersvi /etc/sudoers 在/etc/sudoers中加入一行1b">
+<meta name="description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限  123adduser myuserchmod +x /etc/sudoersvi /etc/sudoers 在/etc/sudoers中加入一行1m">
 <meta name="keywords" content="ubuntu,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我的新服务器配置流程(ubuntu)">
 <meta property="og:url" content="http://www.ohlsj.com/2017/09/20/my-new-ubuntu-server-config/index.html">
 <meta property="og:site_name" content="ohlsj的博客">
-<meta property="og:description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限  123adduser myuserchmod +x /etc/sudoersvi /etc/sudoers 在/etc/sudoers中加入一行1b">
+<meta property="og:description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限  123adduser myuserchmod +x /etc/sudoersvi /etc/sudoers 在/etc/sudoers中加入一行1m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T01:03:24.000Z">
+<meta property="og:updated_time" content="2017-09-22T01:04:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的新服务器配置流程(ubuntu)">
-<meta name="twitter:description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限  123adduser myuserchmod +x /etc/sudoersvi /etc/sudoers 在/etc/sudoers中加入一行1b">
+<meta name="twitter:description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限  123adduser myuserchmod +x /etc/sudoersvi /etc/sudoers 在/etc/sudoers中加入一行1m">
 
 
 
@@ -339,7 +339,7 @@
 <p><code>/etc/sudoers</code>默认没有写权限</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adduser myuser</div><div class="line">chmod +x /etc/sudoers</div><div class="line">vi /etc/sudoers</div></pre></td></tr></table></figure>
-<p>在<code>/etc/sudoers</code>中加入一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">b5u     ALL=(ALL:ALL) NOPASSWD: ALL</div></pre></td></tr></table></figure></p>
+<p>在<code>/etc/sudoers</code>中加入一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myuser     ALL=(ALL:ALL) NOPASSWD: ALL</div></pre></td></tr></table></figure></p>
 <p>最后要去掉<code>/etc/suders</code>的写权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod -x /etc/sudoers</div></pre></td></tr></table></figure></p>
 <h2 id="设置sshkey登录"><a href="#设置sshkey登录" class="headerlink" title="设置sshkey登录"></a>设置sshkey登录</h2><p>编辑<code>/etc/sshd/sshd_config</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">`PubkeyAuthentication yes`</div><div class="line">`AuthorizedKeysFile      .ssh/authorized_keys`</div><div class="line">`GSSAPIAuthentication no`</div></pre></td></tr></table></figure>

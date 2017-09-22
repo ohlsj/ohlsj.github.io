@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="ohlsj的博客">
 <meta property="og:description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T01:05:10.000Z">
+<meta property="og:updated_time" content="2017-09-22T01:13:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的新服务器配置流程(ubuntu)">
 <meta name="twitter:description" content="基本设置升级123apt updateapt upgradereboot 修改hostname12vi /etc/hostnamevi /etc/hosts 创建用户同时加入sudoer并设置sudo免密码  /etc/sudoers默认没有写权限">
@@ -346,6 +346,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">`PubkeyAuthentication yes`</div><div class="line">`AuthorizedKeysFile      .ssh/authorized_keys`</div><div class="line">`GSSAPIAuthentication no`</div></pre></td></tr></table></figure>
 <p>重启<code>sshd</code>服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service sshd restart</div></pre></td></tr></table></figure>
+<p>本地设置</p>
+<p>先看一下本地<code>~/.ssh</code>路径下有没有<code>id_rsa.pub</code>，如果没有则用<code>ssh-keygen</code>生成一个，运行<code>ssh-keygen</code>之后一路回车即可</p>
+<p>然后把<code>id_rsa.pub</code>中的内容添加到<em>服务器</em>的<code>/home/myuser/.ssh/authorized_keys</code>文件最后面(新建一行)</p>
+<p>然后使用myuser用户登录服务器,假设服务器的ip是<code>192.168.1.123</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh myuser@192.168.1.123</div></pre></td></tr></table></figure>
+<p>此时不用密码即可登录</p>
 <h1 id="安装最新版的nginx"><a href="#安装最新版的nginx" class="headerlink" title="安装最新版的nginx"></a>安装最新版的nginx</h1><blockquote>
 <p>默认源中的nginx版本低</p>
 </blockquote>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ohlsj.com/"/>
-  <updated>2017-09-22T01:14:37.000Z</updated>
+  <updated>2017-10-16T09:32:10.000Z</updated>
   <id>http://www.ohlsj.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pandas与sql的对应关系</title>
+    <link href="http://www.ohlsj.com/2017/10/16/pandas-and-sql/"/>
+    <id>http://www.ohlsj.com/2017/10/16/pandas-and-sql/</id>
+    <published>2017-10-16T08:02:04.000Z</published>
+    <updated>2017-10-16T09:32:10.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考:&quot;&gt;&lt;/a&gt;参考:&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/comparison_with_sql.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Comparison with SQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/indexing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Indexing and Selecting Data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;pandas与sql&quot;&gt;&lt;a href=&quot;#pandas与sql&quot; class=&quot;headerlink&quot; title=&quot;pandas与sql&quot;&gt;&lt;/a&gt;pandas与sql&lt;/h1&gt;&lt;p&gt;pandas和sql在很多操作上都是类似的，如果熟悉sql操作，也可以很方便地使用pandas&lt;/p&gt;
+&lt;p&gt;首先需要引用两个库&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; import pandas as pd&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; import numpy as np&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;本文使用的数据来源是&lt;a href=&quot;https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tips&lt;/a&gt;, 假设有与之同名同结构的数据表&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; url = &amp;apos;https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; tips = pdf.read_csv(url)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;tips的数据是这样的&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; tips.head()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   total_bill   tip     sex smoker  day    time  size&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;0       16.99  1.01  Female     No  Sun  Dinner     2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;1       10.34  1.66    Male     No  Sun  Dinner     3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2       21.01  3.50    Male     No  Sun  Dinner     3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3       23.68  3.31    Male     No  Sun  Dinner     2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4       24.59  3.61  Female     No  Sun  Dinner     4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;下面将介绍常见sql操作与pandas操作的对应关系&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://www.ohlsj.com/tags/python/"/>
+    
+      <category term="pandas" scheme="http://www.ohlsj.com/tags/pandas/"/>
+    
+      <category term="sql" scheme="http://www.ohlsj.com/tags/sql/"/>
+    
+  </entry>
   
   <entry>
     <title>我的新服务器配置流程(ubuntu)</title>

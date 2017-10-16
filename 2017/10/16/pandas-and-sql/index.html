@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="pandas, sql, python" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ohlsj的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="参考: Comparison with SQL Indexing and Selecting Data  pandas与sqlpandas和sql在很多操作上都是类似的，如果熟悉sql操作，也可以很方便地使用pandas 首先需要引用两个库 12&amp;gt;&amp;gt;&amp;gt; import pandas as pd&amp;gt;&amp;gt;&amp;gt; import numpy as np 本文使用的数据来源是tip">
+<meta name="keywords" content="pandas, sql, python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas与sql的对应关系">
+<meta property="og:url" content="http://www.ohlsj.com/2017/10/16/pandas-and-sql/index.html">
+<meta property="og:site_name" content="ohlsj的博客">
+<meta property="og:description" content="参考: Comparison with SQL Indexing and Selecting Data  pandas与sqlpandas和sql在很多操作上都是类似的，如果熟悉sql操作，也可以很方便地使用pandas 首先需要引用两个库 12&amp;gt;&amp;gt;&amp;gt; import pandas as pd&amp;gt;&amp;gt;&amp;gt; import numpy as np 本文使用的数据来源是tip">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-16T09:32:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pandas与sql的对应关系">
+<meta name="twitter:description" content="参考: Comparison with SQL Indexing and Selecting Data  pandas与sqlpandas和sql在很多操作上都是类似的，如果熟悉sql操作，也可以很方便地使用pandas 首先需要引用两个库 12&amp;gt;&amp;gt;&amp;gt; import pandas as pd&amp;gt;&amp;gt;&amp;gt; import numpy as np 本文使用的数据来源是tip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ohlsj.com/2017/10/16/pandas-and-sql/"/>
+
+
+
+
+
+  <title>pandas与sql的对应关系 | ohlsj的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ohlsj的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ohlsj.com/2017/10/16/pandas-and-sql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ohlsj">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ohlsj的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">pandas与sql的对应关系</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T16:02:04+08:00">
+                2017-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h1><ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/comparison_with_sql.html" target="_blank" rel="external">Comparison with SQL</a></li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/indexing.html" target="_blank" rel="external">Indexing and Selecting Data</a></li>
+</ul>
+<h1 id="pandas与sql"><a href="#pandas与sql" class="headerlink" title="pandas与sql"></a>pandas与sql</h1><p>pandas和sql在很多操作上都是类似的，如果熟悉sql操作，也可以很方便地使用pandas</p>
+<p>首先需要引用两个库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pandas as pd</div><div class="line">&gt;&gt;&gt; import numpy as np</div></pre></td></tr></table></figure>
+<p>本文使用的数据来源是<a href="https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv" target="_blank" rel="external">tips</a>, 假设有与之同名同结构的数据表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; url = &apos;https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv&apos;</div><div class="line">&gt;&gt;&gt; tips = pdf.read_csv(url)</div></pre></td></tr></table></figure>
+<p>tips的数据是这样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.head()</div><div class="line">   total_bill   tip     sex smoker  day    time  size</div><div class="line">0       16.99  1.01  Female     No  Sun  Dinner     2</div><div class="line">1       10.34  1.66    Male     No  Sun  Dinner     3</div><div class="line">2       21.01  3.50    Male     No  Sun  Dinner     3</div><div class="line">3       23.68  3.31    Male     No  Sun  Dinner     2</div><div class="line">4       24.59  3.61  Female     No  Sun  Dinner     4</div></pre></td></tr></table></figure></p>
+<p>下面将介绍常见sql操作与pandas操作的对应关系</p>
+<a id="more"></a>
+<h1 id="select"><a href="#select" class="headerlink" title="select"></a>select</h1><p>sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select total_bill, tip, smoker, time from tips limit 10;</div></pre></td></tr></table></figure>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips[[&apos;total_bill&apos;, &apos;tip&apos;, &apos;smoker&apos;, &apos;time&apos;]].head(10)</div><div class="line">   total_bill   tip     sex smoker  day    time  size</div><div class="line">0       16.99  1.01  Female     No  Sun  Dinner     2</div><div class="line">1       10.34  1.66    Male     No  Sun  Dinner     3</div><div class="line">2       21.01  3.50    Male     No  Sun  Dinner     3</div><div class="line">3       23.68  3.31    Male     No  Sun  Dinner     2</div><div class="line">4       24.59  3.61  Female     No  Sun  Dinner     4</div><div class="line">5       25.29  4.71    Male     No  Sun  Dinner     4</div><div class="line">6        8.77  2.00    Male     No  Sun  Dinner     2</div><div class="line">7       26.88  3.12    Male     No  Sun  Dinner     4</div><div class="line">8       15.04  1.96    Male     No  Sun  Dinner     2</div><div class="line">9       14.78  3.23    Male     No  Sun  Dinner     2</div></pre></td></tr></table></figure>
+<p>如果要<code>select * from tips</code>, 则对应的pandas操作就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips</div></pre></td></tr></table></figure>
+<h1 id="where"><a href="#where" class="headerlink" title="where"></a>where</h1><h2 id="select-where"><a href="#select-where" class="headerlink" title="select * where"></a>select * where</h2><p>sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from tips where time = &apos;Dinner&apos; limit 10;</div></pre></td></tr></table></figure>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips[tips[&apos;time&apos;] == &apos;Dinner&apos;].head(10)</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.loc[tips[&apos;time&apos;] == &apos;Dinner&apos;].head(10)</div></pre></td></tr></table></figure>
+<h2 id="select-columns-where"><a href="#select-columns-where" class="headerlink" title="select (columns) where"></a>select (columns) where</h2><p>sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select total_bill, tip, smoker, time from tips where time = &apos;Dinner&apos; limit 10;</div></pre></td></tr></table></figure>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.loc[tips[&apos;time&apos;] == &apos;Dinner&apos;, [&apos;total_bill&apos;, &apos;tip&apos;, &apos;smoker&apos;, &apos;time&apos;]].limit(10)</div></pre></td></tr></table></figure>
+<h2 id="select-where-and-or"><a href="#select-where-and-or" class="headerlink" title="select where and/or"></a>select where and/or</h2><p>sql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from tips where time = &apos;Dinner&apos; and tip &gt; 5.0 limit 10;</div></pre></td></tr></table></figure></p>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips[(tips[&apos;time&apos;] == &apos;Dinner&apos;) &amp; (tips[&apos;tip&apos;] &gt; 5.0)].head(10)</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.loc[(tips[&apos;time&apos;] == &apos;Dinner&apos;) &amp; (tips[&apos;tip&apos;] &gt; 5.0)].head(10)</div></pre></td></tr></table></figure>
+<p>sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select total_bill, tip, smoker, time from tips where time = &apos;Dinner&apos; and tip &gt; 5.0 limit 10;</div></pre></td></tr></table></figure>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.loc[(tips[&apos;time&apos;] == &apos;Dinner&apos;) &amp; (tips[&apos;tip&apos;] &gt; 5.0), [&apos;total_bill&apos;, &apos;tip&apos;, &apos;smoker&apos;, &apos;time&apos;]].head(10)</div></pre></td></tr></table></figure>
+<p>sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select total_bill, tip, smoker, time from tips where time = &apos;Dinner&apos; or tip &gt; 5.0 limit 10;</div></pre></td></tr></table></figure>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.loc[(tips[&apos;time&apos;] == &apos;Dinner&apos;) | (tips[&apos;tip&apos;] &gt; 5.0), [&apos;total_bill&apos;, &apos;tip&apos;, &apos;smoker&apos;, &apos;time&apos;]].head(10)</div></pre></td></tr></table></figure>
+<h2 id="判断是否为null"><a href="#判断是否为null" class="headerlink" title="判断是否为null"></a>判断是否为null</h2><p>两个函数, isnull()和notnull()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select total_bill, tip, smoker, time from tips where time is null and tip is not null limit 10;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.loc[tips[&apos;time&apos;].isnull() &amp; tips[&apos;sex&apos;].notnull(), [&apos;total_bill&apos;, &apos;tip&apos;, &apos;smoker&apos;, &apos;time&apos;]].head(10)</div></pre></td></tr></table></figure>
+<h1 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h1><h2 id="group-by-count"><a href="#group-by-count" class="headerlink" title="group by count"></a>group by count</h2><p>sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select sex, time, count(*) from tips group by sex, time;</div></pre></td></tr></table></figure>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.groupby([&apos;sex&apos;, &apos;time&apos;]).size()</div></pre></td></tr></table></figure>
+<p>注意pandas里也有一个<code>count</code>函数，与sql中的<code>count</code>不一样。pandas的<code>count</code>函数会作用到每一列，返回每列的非空数量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.groupby([&apos;sex&apos;, &apos;time&apos;]).count()</div><div class="line">               total_bill  tip  smoker  day  size</div><div class="line">sex    time</div><div class="line">Female Dinner          52   52      52   52    52</div><div class="line">       Lunch           35   35      35   35    35</div><div class="line">Male   Dinner         124  124     124  124   124</div><div class="line">       Lunch           33   33      33   33    33</div></pre></td></tr></table></figure>
+<h2 id="使用多个聚合函数"><a href="#使用多个聚合函数" class="headerlink" title="使用多个聚合函数"></a>使用多个聚合函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select smoker, day, count(*), avg(tip) from tips group by smoker, day;</div></pre></td></tr></table></figure>
+<p>pandas</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tips.groupby([&apos;smoker&apos;, &apos;day&apos;]).agg(&#123;&apos;tip&apos;: [np.size, np.mean]&#125;)</div><div class="line">              tip</div><div class="line">             size      mean</div><div class="line">smoker day</div><div class="line">No     Fri    4.0  2.812500</div><div class="line">       Sat   45.0  3.102889</div><div class="line">       Sun   57.0  3.167895</div><div class="line">       Thur  45.0  2.673778</div><div class="line">Yes    Fri   15.0  2.714000</div><div class="line">       Sat   42.0  2.875476</div><div class="line">       Sun   19.0  3.516842</div><div class="line">       Thur  17.0  3.030000</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/20/my-new-ubuntu-server-config/" rel="next" title="我的新服务器配置流程(ubuntu)">
+                <i class="fa fa-chevron-left"></i> 我的新服务器配置流程(ubuntu)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="ohlsj" />
+          <p class="site-author-name" itemprop="name">ohlsj</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ohlsj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:ohlsj@hotmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pandas与sql"><span class="nav-number">2.</span> <span class="nav-text">pandas与sql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number">3.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#where"><span class="nav-number">4.</span> <span class="nav-text">where</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#select-where"><span class="nav-number">4.1.</span> <span class="nav-text">select * where</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select-columns-where"><span class="nav-number">4.2.</span> <span class="nav-text">select (columns) where</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select-where-and-or"><span class="nav-number">4.3.</span> <span class="nav-text">select where and/or</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断是否为null"><span class="nav-number">4.4.</span> <span class="nav-text">判断是否为null</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#group-by"><span class="nav-number">5.</span> <span class="nav-text">group by</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#group-by-count"><span class="nav-number">5.1.</span> <span class="nav-text">group by count</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用多个聚合函数"><span class="nav-number">5.2.</span> <span class="nav-text">使用多个聚合函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ohlsj</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
